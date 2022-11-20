@@ -90,8 +90,8 @@ class TerapiaController extends Controller
 
         // $terapia->nombre= $request->nombre;
         // $terapia->save();
-        Terapia::where('id', $terapium->id)->update($request->all());
-        // Terapia::where('id', $terapium->id)->update($request->except('_token', 'method'));
+        // Terapia::where('id', $terapium->id)->update($request->all());
+        Terapia::where('id', $terapium->id)->update($request->except('_token', '_method'));
         //Terapia::where('id', $terapium->id)->update($request);
         // Terapia::where('id', $terapium->id)->update(request('nombre', 'correo', 'terapeuta', 'fecha', 'costo'));
 
