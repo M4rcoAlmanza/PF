@@ -14,7 +14,7 @@
                         <tr>
                             <td>{{ $terapium->nombre }}</td>
                             <td>{{ $terapium->correo }}</td>
-                            <td>{{ $terapium->terapeuta }}</td>
+                            <td>{{ $terapium->user->name }}</td>
                             <td>{{ $terapium->fecha }}</td>
                             <td>{{ $terapium->costo }}</td>
 						</tr>
@@ -26,4 +26,6 @@
 			</div>
 			
 		</div>
+    </div>
+    <br><br><br><br>
 </x-inicio>

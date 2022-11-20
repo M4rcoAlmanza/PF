@@ -19,12 +19,6 @@
 						@error('correo')
 							<p>{{ $message }}</p>
 						@enderror
-						<label id="terapeuta-label" for="terapeuta">
-							Nombre del terapeuta: <input type="text" name="terapeuta" id="terapeuta"  value = " {{ $terapium->terapeuta }}" />
-			  			</label><br>
-						@error('terapeuta')
-							<p>{{ $message }}</p>
-						@enderror
 						<label id="fecha-label" for="fecha">
 							Selecciona la fecha: <input type="date" name="fecha" id="fecha" value="$terapium->fecha"/>
 			  			</label><br>

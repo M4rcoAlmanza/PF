@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('terapias', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->string('nombre');
             $table->string('correo');
-            $table->string('terapeuta');
             $table->string('fecha');
             $table->string('costo');
         });

@@ -22,12 +22,6 @@
 						@error('correo')
 							<p>{{ $message }}</p>
 						@enderror
-						<label id="terapeuta-label" for="terapeuta">
-							Nombre del terapeuta: <input type="text" name="terapeuta" id="terapeuta" placeholder="{{old('terapeuta')}}" value = " {{ $terapeuta ?? '' }}" />
-			  			</label><br>
-						@error('terapeuta')
-							<p>{{ $message }}</p>
-						@enderror
 						<label id="fecha-label" for="fecha">
 							Selecciona la fecha: <input type="date" name="fecha" id="fecha" />
 			  			</label><br>
