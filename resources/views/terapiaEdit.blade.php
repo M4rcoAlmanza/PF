@@ -32,15 +32,16 @@
 							<p>{{ $message }}</p>
 						@enderror
 						<label id="costo-label" for="costo">
-							Selecciona el costo: <input type="string" name="costo" id="costo" value = " {{ $terapium->costo}}"/>
+							Selecciona el costo: <input type="text" name="costo" id="costo" value = " {{ $terapium->costo}}"/>
 			  			</label><br>
 						@error('costo')
 							<p>{{ $message }}</p>
 						@enderror
-        					<input type="submit" value="Enviar" id="enviar"/>
+        					<input type="submit" value="Enviar" id="enviar" onclick="M.toast({html: 'Editado'})" class="waves-effect waves-light btn centered">
 					</form>
 					<div class="apartado"></div>
 				</div>
 			</div>
 		</div>
+</div>
 </x-inicio>

@@ -3,7 +3,11 @@
 			
 			<div id="Contenedor">
 				<div id="Contenido">
-					<h1 id="titulo">Formulario</h1>
+				<div class="container">
+      				<h1 class="header center orange-text">Crear</h1>
+					<br><br>
+			    </div>
+  			</div>
 					<form method="POST" action="/terapia" id="formulario">
                         @csrf
 						<label id="nombre-label" for="nombre">
@@ -31,7 +35,7 @@
 							<p>{{ $message }}</p>
 						@enderror
 						<label id="costo-label" for="costo">
-							Selecciona el costo: <input type="string" name="costo" id="costo" placeholder="{{old('costo')}}" value = " {{ $costo ?? '' }}"/>
+							Selecciona el costo: <input type="text" name="costo" id="costo" placeholder="{{old('costo')}}" value = " {{ $costo ?? '' }}"/>
 			  			</label><br>
 						@error('costo')
 							<p>{{ $message }}</p>
@@ -45,4 +49,5 @@
 			</div>
 			
 		</div>
+</div>
 </x-inicio>
