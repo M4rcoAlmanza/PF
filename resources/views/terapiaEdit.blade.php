@@ -7,20 +7,16 @@
 					<form method="POST" action="/terapia/{{$terapium->id}}" id="formulario">
                         @csrf
                         @method('PATCH')
-						<label id="nombre-label" for="nombre">
-							Ingresa tu nombre: <input type="text" id="nombre" name="nombre"  value = "{{ $terapium->nombre}}" />
-						</label><br>
-						@error('nombre')
-							<p>{{ $message }}</p>
-						@enderror
-        				<label id="email-label" for="email">
-        						Ingresa tu email: <input type="email" id="correo" name="correo" value = "{{ $terapium->correo }}"  />
-        				</label><br>
-						@error('correo')
-							<p>{{ $message }}</p>
-						@enderror
+						
+						<label id="costo-label" for="costo">Selecciona el paciente:</label>
+						<select name="usuario_id[]" id="usuario_id" class="browser-default" multiple>
+							<option value="" disabled selected>Elija el/la/los pacientes </option>
+							@foreach($usuarios as $usuario)
+								<option value="{{$usuario->id}}" {{array_search($usuario->id, $terapium->usuarios()->pluck('id')->toArray())!== false ?'selected':''}}>{{$usuario->nombre}}</option>
+							@endforeach
+						</select><br>
 						<label id="fecha-label" for="fecha">
-							Selecciona la fecha: <input type="date" name="fecha" id="fecha" value="$terapium->fecha"/>
+							Selecciona la fecha: <input type="date" name="fecha" id="fecha" value="{{$terapium->fecha}}"/>
 			  			</label><br>
 						@error('fecha')
 							<p>{{ $message }}</p>

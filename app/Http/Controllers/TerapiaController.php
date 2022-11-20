@@ -71,7 +71,8 @@ class TerapiaController extends Controller
      */
     public function edit(Terapia $terapium)
     {
-        return view('terapiaEdit', compact('terapium'));
+        $usuarios = Usuario::all();
+        return view('terapiaEdit', compact('terapium', 'usuarios'));
     }
 
     /**
@@ -88,7 +89,9 @@ class TerapiaController extends Controller
             'costo' => 'required',
         ]);
 
-        Terapia::where('id', $terapium->id)->update($request->except('_token', '_method'));
+
+        Terapia::where('id', $terapium->id)->update($request->except('_token', '_method', 'usuario_id'));
+        $terapium->usuarios()->sync($request->usuario_id);
 
         return redirect('/terapia');
     }

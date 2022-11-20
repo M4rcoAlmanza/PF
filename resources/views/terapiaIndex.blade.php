@@ -9,6 +9,7 @@
   			</div>
 					<table class="centered highlight">
                         <tr>
+							<td><i class="material-icons">date_range</i></td>
                             <td><b>Pacientes</b></td>
                             <td><b>Terapeuta</b></td>
 							<td><i class="material-icons">remove_red_eye</i></td>
@@ -17,6 +18,7 @@
                         </tr>
                         @foreach ($registros as $registro)
                             <tr>
+								<td>{{$registro->fecha}}</td>
 								<td>
 									@foreach($registro->usuarios as $usuarios)
                                 		{{$usuarios->nombre}}</br>
