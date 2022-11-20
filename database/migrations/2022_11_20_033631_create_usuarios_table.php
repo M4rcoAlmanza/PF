@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('terapias', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('fecha');
-            $table->string('costo');
+            $table->string('nombre');
+            $table->string('correo');
+            $table->string('telefono');
+            $table->string('nacimiento');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('terapias');
+        Schema::dropIfExists('usuarios');
     }
 };

@@ -2,24 +2,19 @@
 			<!-- Contenido de la página -->
 			<div id="Contenedor">
 				<div id="Contenido">
-					<h1 id="titulo">SHOW</h1>
-					<table>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Correo</th>
-                            <th>Terapeuta</th>
-                            <th>Fecha</th>
-                            <th>Costo</th>
-                        </tr>
-                        <tr>
-                            <td>{{ $terapium->nombre }}</td>
-                            <td>{{ $terapium->correo }}</td>
-                            <td>{{ $terapium->user->name }}</td>
-                            <td>{{ $terapium->fecha }}</td>
-                            <td>{{ $terapium->costo }}</td>
-						</tr>
-                    </table>
-					
+					<h1 class="header center orange-text">SESION</h1>
+                    <h4>TERAPEUTA</h4><hr>
+                    <p>{{ $terapium->user->name }}</p>
+                    <h4>PACIENTE(S) </h4><hr>
+                        @foreach($terapium->usuarios as $usuarios)
+                        	<p>Nombre: {{$usuarios->nombre}}</p>
+                            <p>Correo: {{$usuarios->correo}}</p>
+						@endforeach
+                    <h4>FECHA</h4><hr>
+                    <p>{{ $terapium->fecha }}</p>
+                    <h4>COSTO </h4><hr>
+                    <p>{{ $terapium->costo }}</p>
+
 					<div class="apartado"></div>
 				</div>
 				

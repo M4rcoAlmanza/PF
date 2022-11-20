@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Terapia;
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class TerapiaController extends Controller
      */
     public function index()
     {
-        $registros = Terapia::all();
+        $registros = Auth::user()->terapias;
         return view('terapiaIndex', compact('registros'));
     }
 
@@ -25,7 +26,8 @@ class TerapiaController extends Controller
      */
     public function create()
     {
-        return view('terapiaCreate');
+        $usuarios = Usuario::all();
+        return view('terapiaCreate', compact('usuarios'));
     }
 
     /**
@@ -37,14 +39,13 @@ class TerapiaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|max:50|min:10',
-            'correo'=> 'required|email',
             'fecha' => 'required|date',
             'costo' => 'required',
         ]);
         $request->merge(['user_id' => Auth::id()]);
 
-        Terapia::create($request->all());
+        $terapia = Terapia::create($request->all());
+        $terapia->usuarios()->attach($request->usuario_id);
         return redirect('/terapia');
     }
 
@@ -83,8 +84,6 @@ class TerapiaController extends Controller
     public function update(Request $request, Terapia $terapium)
     {
         $request->validate([
-            'nombre' => 'required|max:50|min:10',
-            'correo'=> 'required|email',
             'fecha' => 'required|date',
             'costo' => 'required',
         ]);

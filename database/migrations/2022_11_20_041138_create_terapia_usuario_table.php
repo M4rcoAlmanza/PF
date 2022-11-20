@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('terapias', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('fecha');
-            $table->string('costo');
+        Schema::create('terapia_usuario', function (Blueprint $table) {
+            $table->foreignId('terapia_id')->constrained();
+            $table->foreignId('usuario_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('terapias');
+        Schema::dropIfExists('terapia_usuario');
     }
 };
