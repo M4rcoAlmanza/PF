@@ -32,17 +32,11 @@
 										@csrf
 										@method('DELETE')
 										<input type="submit" value="Eliminar" class="btn waves-effect waves-light tooltipped" data-position="left" data-tooltip="Borrar el registro">
-										
 									</form>
 								</td>
-                                <!-- <td>{{$registro->correo}}</td>
-                                <td>{{$registro->fecha}}</td>
-                                <td>{{$registro->costo}}</td> -->
                             </tr>
                         @endforeach
                     </table>
-					
-					<div class="apartado"></div>
 				</div>
 				
 			</div>

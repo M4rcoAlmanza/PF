@@ -22,10 +22,20 @@
       	<ul class="right hide-on-med-and-down">
         	<li><a href="/terapia">INICIO</a></li>
 			<li><a href="/terapia/create">CREAR</a></li>
+			<li>
+				<form method="POST" action="http://pf.test/logout" x-data="">
+                	<input type="hidden" name="_token" value="z4pRCSqDVWEntlsx1Nzf6BiVnzwrIP3b5dh0PXlR">
+                	<a href="http://pf.test/logout" @click.prevent="$root.submit();">CERRAR SESIÓN</a>
+            	</form>
+			</li>
       	</ul>
       	<ul id="nav-mobile" class="sidenav">
         	<li><a href="/terapia">INICIO</a></li>
 			<li><a href="/terapia/create">CREAR</a></li>
+			<li><form method="POST" action="http://pf.test/logout" x-data="">
+                <input type="hidden" name="_token" value="Q83qRAaxcO2W7zUsIL1WiGfyycQnYKPe2FzLe5vy">
+                <a href="http://pf.test/logout" @click.prevent="$root.submit();">CERRAR SESIÓN</a>
+            </form><li>
       	</ul>
       	<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     	</div>

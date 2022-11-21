@@ -15,7 +15,8 @@ class TerapiaController extends Controller
      */
     public function index()
     {
-        $registros = Auth::user()->terapias;
+        // $registros = Auth::user()->terapias;
+        $registros = Terapia::with('user', 'usuarios')->get();
         return view('terapiaIndex', compact('registros'));
     }
 
@@ -104,6 +105,8 @@ class TerapiaController extends Controller
      */
     public function destroy(Terapia $terapium)
     {
+        // $terapium->delete()->onDelete('cascade');
+        $terapium->usuarios()->detach();
         $terapium->delete();
         return redirect('/terapia');
     }
