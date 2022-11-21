@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Providers;
-
-// use Illuminate\Support\Facades\Gate;
+use App\Models\User;
+use App\Models\Terapia;
+use Illuminate\Support\Facades\Gate;
+use App\Policies\TerapiaPolicy;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Terapia::class => TerapiaPolicy::class,
     ];
 
     /**
@@ -25,6 +28,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('editar-terapia', function(User $user, Terapia $terapia){
+            return $user->id === $terapia->user->id
+                ? Response::allow()
+                : Response::deny('Este no es tu paciente.');
+        });
     }
 }

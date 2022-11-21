@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Terapia;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class TerapiaController extends Controller
@@ -72,6 +73,7 @@ class TerapiaController extends Controller
      */
     public function edit(Terapia $terapium)
     {
+        Gate::authorize('editar-terapia', $terapium);
         $usuarios = Usuario::all();
         return view('terapiaEdit', compact('terapium', 'usuarios'));
     }
@@ -105,6 +107,7 @@ class TerapiaController extends Controller
      */
     public function destroy(Terapia $terapium)
     {
+        $this->authorize('delete', $terapium);
         // $terapium->delete()->onDelete('cascade');
         $terapium->usuarios()->detach();
         $terapium->delete();

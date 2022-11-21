@@ -26,13 +26,17 @@
 								</td>
 								<td>{{$registro->user->name}}</td>
 								<td><a href="/terapia/{{$registro->id}}" class="waves-effect waves-light btn tooltipped" data-position="left" data-tooltip="Ver datos">Ver</a></td>
-								<td><a href="/terapia/{{$registro->id}}/edit" class="waves-effect waves-light btn tooltipped" data-position="left" data-tooltip="Actualizar datos"> Editar</a></td>
+								@can('update', $registro)
+									<td><a href="/terapia/{{$registro->id}}/edit" class="waves-effect waves-light btn tooltipped" data-position="left" data-tooltip="Actualizar datos"> Editar</a></td>
+								@endcan
 								<td>
+									@can('delete', $registro)
 									<form action="/terapia/{{$registro->id}}" method="post">
 										@csrf
 										@method('DELETE')
 										<input type="submit" value="Eliminar" class="btn waves-effect waves-light tooltipped" data-position="left" data-tooltip="Borrar el registro">
 									</form>
+									@endcan
 								</td>
                             </tr>
                         @endforeach
