@@ -29,7 +29,6 @@
 						@enderror
         					<input type="submit" value="Enviar" id="enviar" onclick="M.toast({html: 'Editado'})" class="waves-effect waves-light btn centered">
 					</form>
-					<div class="apartado"></div>
 				</div>
 			</div>
 		</div>

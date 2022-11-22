@@ -113,4 +113,8 @@ class TerapiaController extends Controller
         $terapium->delete();
         return redirect('/terapia');
     }
+
+    public function salir(){
+        return Auth::logout();
+    }
 }

@@ -14,4 +14,8 @@ class Usuario extends Model
     public function terapias(){
         return $this->belongsToMany(Terapia::class);
     }
+
+    public function archivos(){
+        return $this->hasMany(Archivo::class);
+    }
 }

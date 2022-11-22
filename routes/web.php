@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TerapiaController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Http\Request;
 
 /*
@@ -23,6 +24,8 @@ Route::resource('terapia', TerapiaController::class)->parameters([
     'terapium'=>'terapia'
 ])->middleware('auth');
 
+Route::resource('usuario', UsuarioController::class)->middleware('auth');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -32,3 +35,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/descarga/{archivo}', [UsuarioController::class, 'downloadPhoto'])->name('descarga');
+
+Route::get('/logout', [TerapiaController::class, 'salir']);
